@@ -221,3 +221,56 @@ v_\pi(s) = r(s,\pi(s)) + \gamma \sum_{s'} p(s' \mid s,\pi(s))\,v_\pi(s') \quad \
 If, however, we add some discounting (\(\gamma = 0.9\)), then \(v_\pi(s)\) will have a finite value because the return will eventually become so small that \(v_\pi(s)\) converges to a finite value. Thus we can apply policy iteration on it.
 
 Policy iteration will eventually converge to the same optimal policy we derived above. It might take more iterations but the convergence will remain the same.
+
+---
+
+## Q3 Code
+
+Attaching Snippets here
+
+**(a)**
+**(b)**
+
+---
+
+## Q4 Written
+
+**(a)**
+
+There is indeed a bug in the pseudocode because it does not consider the case where the policy improvement step can replace an action with a different action that has the same q value. Because it seems to favor the new action over the current one. Thus, the policy may not converge because the improvement step keeps cycling between two optimal policies.
+
+To fix it, we can just break ties in favor of the current policy, if the new policy is not definitely better, we will keep the current policy and the algorithm will converge.
+
+The pseudocode change is as follows
+
+    for each state s:  
+      old_action = π(s)
+      # Compute the Q-values for all actions at state s
+      Q(s, a) = R(s, a) + γ * V(s')   for each action a
+      best_action = argmax_a Q(s, a)
+      
+      # Only update the policy if the new best action is strictly better 
+      than the current action.
+      if Q(s, best_action) > Q(s, old_action):
+          π(s) = best_action
+          policy_stable = False
+      else:
+          # Retain the old action if it is just as good.
+          π(s) remains unchanged
+
+**(b)**
+
+There is no such issue in the value iteration because the update formula makes it so that it converges to a unique fixed point regardless of how ties in the maximization are broken. Even if more than one action attains the maximum, the state-value function is uniquely determined. Hence, any ambiguity in the choice of action does not affect the convergence of the value function, and there is no risk of cycling.
+
+---
+
+## Q5
+
+### (a) Written
+
+I think that the main reason is the sparse reward function combined with the fact that the decision is driven by the need to maximize chance of winning. The gambler can only bet the smaller of the amount of money he has and the amount of money he needs to reach $100. ie: he can only choose \(\min_a(s,100-s)\)
+
+So, at 50, he can bet a max of 50, this gets him to 100 and gets him the +1 reward. If he loses that, the game ends, for which there is no negative reward. Thus, the optimal action in that situation is to end it in the next flip. 
+
+When he has 51, the max he can bet is 49, so he may win in one step, but if he loses, he will have \$2 and he still has to play the game, so the optimal action is betting very small, if he bets \$1, he can win and get closer to 100, if he loses, he will be at \$50 which can again put him in the position to win.
+
