@@ -229,7 +229,10 @@ Policy iteration will eventually converge to the same optimal policy we derived 
 Attaching Snippets here
 
 **(a)**
+<img src="image-4.png" alt="drawing" width="300"/>
+
 **(b)**
+<img src="image-3.png" alt="drawing" width="300"/>
 
 ---
 
@@ -274,3 +277,10 @@ So, at 50, he can bet a max of 50, this gets him to 100 and gets him the +1 rewa
 
 When he has 51, the max he can bet is 49, so he may win in one step, but if he loses, he will have \$2 and he still has to play the game, so the optimal action is betting very small, if he bets \$1, he can win and get closer to 100, if he loses, he will be at \$50 which can again put him in the position to win.
 
+### (b) Code
+
+The plots are provided below, it seems like the policy does become stable, as \(\theta \to 0\). However, for the \(ph \geq 0.5\) case, The agent only makes bets of 1, which seems wierd. This could also be due the fact we are rounding our q values.
+
+<img src="image-1.png" alt="drawing" width="512"/>
+
+<img src="image-2.png" alt="drawing" width="512"/>
