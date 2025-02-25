@@ -42,7 +42,7 @@ $V(S0) = \frac{10+9+8+7+6+5+4+3+2+1}{10}=5.5$
 ---
 ## Q3
 ### a)
-![alt text](image-3.png)
+![alt text](image-8.png)
 
 ### b)
 The $\epsilon = 0$ plot converges to a suboptimal policy.
@@ -70,10 +70,19 @@ Thus $\frac{1}{b(A_t|S_t)}$ is correct
 ---
 ## Q5
 ### a)
-![alt text](image-4.png)
+This is the undiscounted return
+![alt text](image-9.png)
+
+This is the discounted return
+![alt text](image-11.png)
 
 ### b)
-![alt text](image-5.png)
+
+This is the undiscounted return
+![alt text](image-10.png)
+
+This is the discounted return
+![alt text](image-12.png)
 
 ### c)
 
