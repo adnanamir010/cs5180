@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import numpy as np
-import gymnasium as gym  # Using gymnasium instead of gym
+import gymnasium as gym
 import copy
 import tqdm
 from collections import namedtuple
@@ -398,11 +398,11 @@ def train_atari_dqn(
         - episode_lengths: List containing the length of each episode
         - losses: List containing the loss of each training batch
     """
-    # Create the environment with appropriate wrappers
+    # Create the environment
     env = make_atari_env(env_name)
     
     # Get input shape and action space size
-    input_shape = env.observation_space.shape  # Typically (4, 84, 84) for frame stacking
+    input_shape = env.observation_space.shape
     action_dim = env.action_space.n
     
     print(f"Environment: {env_name}")
@@ -525,7 +525,7 @@ def train_atari_dqn(
             
             optimizer.zero_grad()
             loss.backward()
-            # Clip gradients to stabilize training (reduced from 10 to 1)
+            # Clip gradients to stabilize training
             torch.nn.utils.clip_grad_norm_(dqn_model.parameters(), 1.0)
             optimizer.step()
             
@@ -535,7 +535,7 @@ def train_atari_dqn(
         if t % target_update_frequency == 0:
             dqn_target.load_state_dict(dqn_model.state_dict())
             
-            # Compute Q-value stats but don't print separately - will be included in progress bar
+            # Compute Q-value stats
             if t % 10000 == 0:
                 with torch.no_grad():
                     # Sample some states from memory to check Q-values
