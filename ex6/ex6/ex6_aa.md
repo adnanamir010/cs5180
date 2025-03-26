@@ -50,20 +50,23 @@ Loss wrt Training steps
 
 # Q3 DQN Cartpole/Lunarlander
 
+Learning curves
+![alt text](dqn_learning_curves.png)
+
 Cartpole lengths
-![alt text](cartpole_lengths.png)
+![alt text](cartpole_detailed_metrics_lengths.png)
 
 Cartpole Losses
 ![alt text](cartpole_losses.png)
 
 Cartpole Returns
-![alt text](cartpole_returns.png)
+![alt text](cartpole_detailed_metrics_returns.png)
 
 ll lengths
-![alt text](lunarlander_lengths.png)
+![alt text](lunarlander_detailed_metrics_lengths.png)
 
 ll losses
-![alt text](lunarlander_losses.png)
+![alt text](lunarlander_detailed_metrics_losses.png)
 
 ll_returns
-![alt text](lunarlander_returns.png)
+![alt text](lunarlander_detailed_metrics_returns.png)
